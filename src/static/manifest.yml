@@ -1,5 +1,5 @@
 applications:
-- name: simple-chat-front-<your-name>
-  host: simple-chat-front-<your-name>
+- name: simple-chat-frontend-<your-name>
+  host: simple-chat-frontend-<your-name>
   health-check-type: process
   buildpack: staticfile_buildpack
