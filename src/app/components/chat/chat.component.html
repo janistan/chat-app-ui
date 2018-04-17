@@ -1,0 +1,37 @@
+<div class="primary-body" id="chat-body">
+  <div class="chat-window" id="chat-ds">
+    <div class="chat" *ngFor="let chat of chats">
+      <div class=spacer *ngIf="chat.from != 'watson'"></div>
+      <mat-card>
+        <mat-card-header *ngIf="chat.from == 'watson'">
+          <img mat-card-avatar src="assets/logo.png">
+          <mat-card-title>IBM Watson</mat-card-title>
+          <mat-card-subtitle>Artificial Inteligence</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-header *ngIf="chat.from != 'watson'">
+          <img mat-card-avatar src="assets/user.png">
+          <mat-card-title>You</mat-card-title>
+          <mat-card-subtitle>{{chat.from}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            {{chat.text}}
+          </p>
+        </mat-card-content>
+      </mat-card>
+      <div class=spacer *ngIf="chat.from == 'watson'"></div>
+    </div>
+  </div>
+  <hr/>
+    <div class="input-window">
+      <mat-form-field class="message-input">
+        <input matInput
+        [(ngModel)]="message" name ="chatMessage"
+        (keyup)="onKey($event)"
+        placeholder="Enter your message">
+      </mat-form-field>
+      <button mat-button (click)="sendMessage()">
+        <mat-icon class="icon material-icon">send</mat-icon>
+      </button>
+    </div>
+</div>

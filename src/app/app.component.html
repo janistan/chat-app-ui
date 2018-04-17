@@ -1,0 +1,31 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<mat-sidenav-container>
+  <mat-sidenav  #sidenav mode="over" class="mat-elevation-z6 md-sidenav-left show-gt-md" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4" flex>
+    <div class="side-title">
+      <img class="menu-logo" src="../assets/logo.png" width="60%">
+      <br> IBM Watson
+    </div>
+    <nav class="side-list">
+      <mat-nav-list>
+        <a mat-list-item *ngFor="let menu of menus; let i = index" (click)=" sidenav.close(); changePage(i)" routerLink="{{menu.link}}">
+          <mat-icon class="icon material-icon">{{menu.icon}}</mat-icon>
+          <h3>{{menu.title}}</h3>
+        </a>
+      </mat-nav-list>
+    </nav>
+  </mat-sidenav>
+  <mat-toolbar color="primary" class="mat-elevation-z6 col-md-9 col-sm-9 col-xs-12">
+    <button mat-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>
+      <h2 flex>{{menus[menuIndex].title}}</h2>
+    </span>
+    <span class="toolbar-spacer"></span>
+    <button mat-button (click)="clearChat()">
+      <mat-icon class="icon material-icon">clear</mat-icon>
+    </button>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
